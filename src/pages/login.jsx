@@ -39,3 +39,6 @@ function Login() {
 }
 
 export default Login;
+<p>
+  Don't have an account? <a href="/register">Sign Up</a>
+</p>

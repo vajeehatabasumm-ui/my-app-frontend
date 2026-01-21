@@ -11,35 +11,41 @@ function Register() {
         "https://my-app-backend.onrender.com/api/auth/register",
         form
       );
-      alert("Registered successfully! You can now login.");
+      alert("Registration successful! Please sign in.");
     } catch (err) {
-      alert("Registration failed: " + err.response?.data?.message || err.message);
+      alert("Registration failed: " + (err.response?.data?.message || err.message));
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
-      <input
-        placeholder="Username"
-        onChange={e => setForm({ ...form, username: e.target.value })}
-        required
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        onChange={e => setForm({ ...form, email: e.target.value })}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={e => setForm({ ...form, password: e.target.value })}
-        required
-      />
-      <button type="submit">Sign Up</button>
-    </form>
+    <div>
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Username"
+          onChange={(e) => setForm({ ...form, username: e.target.value })}
+          required
+        />
+        <input
+          placeholder="Email"
+          type="email"
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          required
+        />
+        <input
+          placeholder="Password"
+          type="password"
+          onChange={(e) => setForm({ ...form, password: e.target.value })}
+          required
+        />
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
   );
 }
 
 export default Register;
+<p>
+  Already have an account? <a href="/login">Sign In</a>
+</p>
+
