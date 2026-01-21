@@ -33,7 +33,7 @@ function Login() {
         onChange={e => setForm({ ...form, password: e.target.value })}
         required
       />
-      <button type="submit">Login</button>
+      <button type="submit">Sign In</button>
     </form>
   );
 }
