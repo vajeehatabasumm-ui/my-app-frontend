@@ -1,34 +1,26 @@
 import { useState } from "react";
 import axios from "axios";
 
-function Register() {
-  const [form, setForm] = useState({
-    username: "",
-    email: "",
-    password: ""
-  });
+function Login() {
+  const [form, setForm] = useState({ email: "", password: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Live backend URL
-      await axios.post(
-        "https://my-app-backend.onrender.com/api/auth/register",
+      const res = await axios.post(
+        "https://my-app-backend.onrender.com/api/auth/login",
         form
       );
-      alert("Registered successfully!");
+      alert("Login successful! Token: " + res.data.token);
+      // You can store token in localStorage for authentication
+      localStorage.setItem("token", res.data.token);
     } catch (err) {
-      alert("Registration failed: " + err.response?.data?.message || err.message);
+      alert("Login failed: " + err.response?.data?.message || err.message);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        placeholder="Username"
-        onChange={e => setForm({ ...form, username: e.target.value })}
-        required
-      />
       <input
         placeholder="Email"
         type="email"
@@ -41,9 +33,9 @@ function Register() {
         onChange={e => setForm({ ...form, password: e.target.value })}
         required
       />
-      <button type="submit">Sign Up</button>
+      <button type="submit">Login</button>
     </form>
   );
 }
 
-export default Register;
+export default Login;
