@@ -9,7 +9,7 @@ function Login() {
     try {
       const res = await axios.post(
        "https://my-app-backend1-2obr.onrender.com/api/auth/login",
-  formData
+  form
       );
       alert("Login successful! Token: " + res.data.token);
       // You can store token in localStorage for authentication

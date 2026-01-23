@@ -9,7 +9,7 @@ function Register() {
     try {
       await axios.post(
         "https://my-app-backend1-2obr.onrender.com/api/auth/register",
-  formData
+  form
       );
       alert("Registration successful! Please sign in.");
     } catch (err) {
